@@ -48,10 +48,10 @@ def delete_teacher_data(request,id):
 
 def show_img_page(request):
     if request.method=='POST':
-        form = img_form(request.POST)
+        form = img_form(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('img')
     else:
         form = img_form()
-    return render(request,'img_page.html',{'form':form})
+        return render(request,'img_page.html',{'form':form})
